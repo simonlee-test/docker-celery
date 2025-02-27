@@ -11,10 +11,8 @@ services:
       - .:/usr/src/app/ #Maps the current directory (host) to /usr/src/app/ inside the container. This enables live code updates and easier development.
     ports:
       - 8001:8000
-    environment:
-      - DEBUG=1
-      - SECRET_KEY=django-insecure-s=e2yb&=1d%1f#&4xjr7gn6m_0sjg@d-vb3ibe#lvo=rixx6)h
-      - ALLOWED_HOSTS=localhost, 127.0.0.1
+    env_file:
+      - .env
     depends_on: #redis container/service will start first before django container starts
       - redis
 
