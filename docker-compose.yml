@@ -1,6 +1,7 @@
-version: '21.0'
-
 services:
+  redis:
+    container_name: redis_container_mou
+    image: redis:7.4.2-bookworm
   django:
     container_name: django_container_mou
     build: 
@@ -14,6 +15,8 @@ services:
       - DEBUG=1
       - SECRET_KEY=django-insecure-s=e2yb&=1d%1f#&4xjr7gn6m_0sjg@d-vb3ibe#lvo=rixx6)h
       - ALLOWED_HOSTS=localhost, 127.0.0.1
+    depends_on: #redis container/service will start first before django container starts
+      - redis
 
 
 
