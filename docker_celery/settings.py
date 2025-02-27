@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'food'
+    'celery_worker'
 ]
 
 MIDDLEWARE = [
