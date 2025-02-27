@@ -10,11 +10,21 @@ services:
     volumes:
       - .:/usr/src/app/ #Maps the current directory (host) to /usr/src/app/ inside the container. This enables live code updates and easier development.
     ports:
+      #port number on host machine: port number on container
       - 8001:8000
     env_file:
       - .env
     depends_on: #redis container/service will start first before django container starts
       - redis
-
+  celery:
+    container_name: celery_container
+    build: 
+      context: . #the directory containing the Dockerfile and all files needed for the build
+    volumes:
+      - .:/usr/src/app/ #Maps the current directory (host) to /usr/src/app/ inside the container. This enables live code updates and easier development.
+    env_file:
+      - .env
+    depends_on: #redis container/service will start first before django container starts
+      - redis
 
 
