@@ -1,0 +1,19 @@
+version: '21.0'
+
+services:
+  django:
+    container_name: django_container_mou
+    build: 
+      context: . #the directory containing the Dockerfile and all files needed for the build
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/usr/src/app/ #Maps the current directory (host) to /usr/src/app/ inside the container. This enables live code updates and easier development.
+    ports:
+      - 8001:8000
+    environment:
+      - DEBUG=1
+      - SECRET_KEY=django-insecure-s=e2yb&=1d%1f#&4xjr7gn6m_0sjg@d-vb3ibe#lvo=rixx6)h
+      - ALLOWED_HOSTS=localhost, 127.0.0.1
+
+
+
